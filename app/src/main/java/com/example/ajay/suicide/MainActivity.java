@@ -1,6 +1,7 @@
 package com.example.ajay.suicide;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
@@ -8,11 +9,21 @@ import android.os.Bundle;
 import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
-
+    DatabaseHelper myDb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        myDb = new DatabaseHelper(this);
+
+        SharedPreferences preferences = getSharedPreferences("PREF" , MODE_PRIVATE);
+        boolean check = preferences.getBoolean("registered", false);
+
+        if(check == false){
+            Intent i = new Intent(this, register.class);
+            startActivity(i);
+        }else{
+        }
     }
 
     public void openAskForHelp(View view){
@@ -43,5 +54,10 @@ public class MainActivity extends AppCompatActivity {
     public void openMusic(View view){
         Intent intent = new Intent(MediaStore.INTENT_ACTION_MUSIC_PLAYER) ;
         startActivity(intent);
+    }
+
+    public void openProfile(View view){
+        Intent i = new Intent(this,Profile.class);
+        startActivity(i);
     }
 }

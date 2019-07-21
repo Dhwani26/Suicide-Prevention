@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/tan_background"
     tools:context=".AskForHelpActivity">
 
 
@@ -13,19 +14,16 @@
         android:layout_height="wrap_content"
         android:id="@+id/list"
         android:layout_alignParentTop="true"
-        android:layout_margin="15dp"
+
         android:padding="10dp" />
 
 
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="call someone you would like to talk to ...."
+        android:text="Call someone you would like to talk to ...."
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="25dp"
-        android:textSize="20sp"
+        style="@style/CategoryStyle"
+        android:background="@color/mint"
         android:onClick="openContacts"/>
 
     </RelativeLayout>

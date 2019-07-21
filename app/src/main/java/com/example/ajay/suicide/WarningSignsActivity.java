@@ -2,6 +2,8 @@ package com.example.ajay.suicide;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.Adapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -33,6 +35,29 @@ public class WarningSignsActivity extends AppCompatActivity {
         CustomAdapter adapter = new CustomAdapter(this , warn ) ;
         ListView listView = (ListView) findViewById(R.id.list_warning) ;
         listView.setAdapter(adapter);
+
+        //ListView lv = (ListView)findViewById(R.id.myListView);  // your listview inside scrollview
+        listView.setOnTouchListener(new ListView.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                int action = event.getAction();
+                switch (action) {
+                    case MotionEvent.ACTION_DOWN:
+                        // Disallow ScrollView to intercept touch events.
+                        v.getParent().requestDisallowInterceptTouchEvent(true);
+                        break;
+
+                    case MotionEvent.ACTION_UP:
+                        // Allow ScrollView to intercept touch events.
+                        v.getParent().requestDisallowInterceptTouchEvent(false);
+                        break;
+                }
+
+                // Handle ListView touch events.
+                v.onTouchEvent(event);
+                return true;
+            }
+        });
     }
 
 

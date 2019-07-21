@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".AskForHelpActivity"
-            android:label = "HelpLine Numbers"/>
+            android:label = "HelpLine Numbers" android:textColor = "#ffffffff"/>
 
         <activity android:name=".WarningSignsActivity"
             android:label="Warning Signs"/>
@@ -27,6 +27,10 @@
             android:label="What To Do"/>
         <activity android:name=".PlacesActivity"
             android:label="My Safe Place"/>
+        <activity android:name=".register"
+            android:label="Register"/>
+        <activity android:name=".Profile"
+            android:label="Profile"/>
     </application>
 
 </manifest>
